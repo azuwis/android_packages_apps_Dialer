@@ -141,7 +141,11 @@ public class PhoneCallDetailsHelper {
             // We have a real phone number as "nameView" so make it always LTR
             views.nameView.setTextDirection(View.TEXT_DIRECTION_LTR);
         } else {
-            nameText = details.name;
+            if (TextUtils.isEmpty(details.geocode)) {
+                nameText = details.name;
+            } else {
+                nameText = details.name + " " + details.geocode;
+            }
             numberText = displayNumber;
             labelText = TextUtils.isEmpty(numberFormattedLabel) ? numberText :
                     numberFormattedLabel;
