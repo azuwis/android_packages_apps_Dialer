@@ -143,8 +143,13 @@ public class PhoneCallDetailsHelper {
         } else {
             nameText = details.name;
             numberText = displayNumber;
-            labelText = TextUtils.isEmpty(numberFormattedLabel) ? numberText :
-                    numberFormattedLabel;
+            if (TextUtils.isEmpty(details.geocode)) {
+                labelText = TextUtils.isEmpty(numberFormattedLabel) ? numberText :
+                        numberFormattedLabel;
+            } else {
+                labelText = (TextUtils.isEmpty(numberFormattedLabel) ? numberText :
+                        numberFormattedLabel) + " " + details.geocode;
+            }
         }
 
         if (filter != null) {
