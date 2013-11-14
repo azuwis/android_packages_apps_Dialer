@@ -205,6 +205,9 @@ public class PhoneCallDetailsHelper {
             } else {
                 numberFormattedLabel = Phone.getTypeLabel(mResources, details.numberType,
                         details.numberLabel);
+                if(!TextUtils.isEmpty(details.geocode)) {
+                    numberFormattedLabel += "," + details.geocode;
+                }
             }
         }
 
